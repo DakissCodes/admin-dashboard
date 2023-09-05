@@ -1,0 +1,19 @@
+Tasks
+
+1. Set up overall layout using grid / flexbox
+    - Start with mobile layout
+    - Setup initial design 
+    a. HEADER
+    b. DASHBOARD
+    c. MAIN
+
+2. Decide on theme
+    - Refer to tailwind css for template colors
+    - Make it simple!
+    a. GATHER ASSETS
+    - Icons, images, click sounds
+    - Fonts (italic, bold)
+    b. Design all parts of the webpage
+
+3. Animate the webpage
+    

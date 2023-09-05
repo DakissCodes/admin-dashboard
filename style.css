@@ -1,0 +1,64 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid lightslategray;
+}
+
+
+body, html {
+    height: 99vh;
+}
+
+.main-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: [left-most] 4rem [left-mid] 1fr [column-end];
+    grid-template-rows: [top-most] 2fr [mid-mid] 8fr [row-end];
+    /* grid-template-areas: 
+    [top-most] 2fr 
+    [mid-mid] 8fr 
+    [row-end]
+    /
+    [left-most] 1fr 
+    [left-mid] 5fr
+    [column-end]; */
+}
+
+/* DASHBOARD */
+
+.dashboard {
+    grid-area: top-most / left-most / row-end / left-mid;
+    background-color: slategray;
+    display: grid;
+    grid-template-rows: ;
+}
+
+/* dashboard logo */
+
+.dashboard-logo h1 {
+    display: none;
+}
+
+/* first section */
+
+.sections-1 div > div {
+    display: none;
+    background-color: yellow;
+}
+/* second section */
+
+.sections-2 div > div {
+    display: none;
+    background-color: green;
+}
+
+/* HEADER */
+.header {
+    background-color: slateblue;
+    grid-area: top-most / left-mid / mid-mid / column-end;
+
+}
+
+
