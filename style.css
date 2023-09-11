@@ -70,7 +70,7 @@ body, html {
 .main-container {
     height: 100%;
     display: grid;
-    grid-template-columns: [left-most] 3.5rem [left-mid] 1fr [column-end];
+    grid-template-columns: [left-most] auto [left-mid] 1fr [column-end];
     grid-template-rows: [top-most] auto [mid-mid] 8fr [row-end];
     /* grid-template-areas: 
     [top-most] 2fr 
@@ -99,6 +99,7 @@ body, html {
     justify-content: center;
 }
 
+
 .white-filter {
     filter: var(--white-filter)
 }
@@ -123,6 +124,7 @@ body, html {
     display: none;
 }
 
+
 /* first section */
 .sections-1 {
     display: grid;
@@ -130,9 +132,7 @@ body, html {
 
 }
 
-.sections-1 div {
-    text-align: center;
-}
+
 
 /* second section */
 .sections-2 {
@@ -140,10 +140,17 @@ body, html {
     row-gap: 7px;
 }
 
+.sections-1 div,
 .sections-2 div {
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
+.sections-1 div h3,
+.sections-2 div h3 {
+    /* hides logo names for mobile layout */
+    display: none;
+}
 
 /* icons */
 
@@ -171,13 +178,17 @@ body, html {
 
 .bell-pfp {
     display: flex;
-    column-gap: 10px;
+    column-gap: 15px;
     align-items: center;
 }
 
 .search-bar-mob {
     display: flex;
     align-items: center;
+}
+
+.search-bar-mob input {
+    display: none;
 }
 
 img[alt="notif-bell"] {
@@ -216,7 +227,7 @@ img[alt="pfp"] {
     grid-column: 1/2;
 }
 /*  ACTION BAR */
-.action-bar {
+.greeting-row {
     grid-row: 3/4;
     grid-column: 1/2;
     display: flex;
@@ -224,9 +235,9 @@ img[alt="pfp"] {
     padding: 12px 0px;
 }
 
-.action-bar button {
+.greeting-row button {
     padding: 7px 20px;
-    border-radius: 5px;
+    border-radius: 18px;
     background-color: var(--accent-clr);
     box-shadow: var(--light-box-shadow);
     font-weight: 600;
@@ -236,7 +247,7 @@ img[alt="pfp"] {
 
 
 
-/* MAIN */
+/*  */
 
 .main {
     display: grid;
@@ -247,14 +258,18 @@ img[alt="pfp"] {
 .projects-grid-container {
     display: grid;
     gap: 20px;
-
+    align-items: start;
+    flex: 1;
 }
+
 /* project  */
 
 .projects {
+    grid-template-rows: auto 1fr;
     width: 100%;
     display: flex; 
     flex-direction: column;
+    row-gap: 10px;
 }
 
 .project-card {
@@ -265,7 +280,9 @@ img[alt="pfp"] {
     background-color: white;
     border-left: 3px solid var(--accent-clr);
     row-gap: 20px;
+    height: 100%
 }
+
 
 article {
     display: flex;
@@ -291,6 +308,9 @@ p {
     font-size: 14px;
 }
 
+.project-card article p {
+    overflow: hidden;
+}
 
 .card-btns {
     display: flex;
@@ -303,9 +323,17 @@ p {
 }
 
 /* announcement card */
-.announcements, .trending, .projects{
-    display: grid;
+.announcements, .trending{
+    grid-template-rows: auto auto;
+    /* display: grid; */
+    display: flex; 
+    flex-direction: column;
+    
     gap: 10px;
+}
+
+.announcements {
+    grid-template
 }
 .announcement-card,
 .trending-card {
@@ -313,7 +341,7 @@ p {
     padding: 20px;
     border-radius: 10px;
     row-gap: 10px;
-    width: 100%;
+    width: min(,300px,100%);
     background-color: white;     
     display: flex;
     flex-direction: column;
@@ -327,4 +355,168 @@ p {
 
 }
 
+/* DESKTOP */
 
+
+@media only screen and (min-width:700px) {
+
+/* main container: 2 rows, 2 columns */
+    
+/* dashboard: 
+    display icon names  
+    */
+    
+    .dashboard {
+        padding-right: 40px;
+    }
+
+    .sections-1 div,
+    .sections-2 div{
+        place-content: center flex-start;
+        padding: 5px 20px;
+        column-gap: 15px;
+        
+    }
+    
+
+    
+    .sections-1 div h3,
+    .sections-2 div h3 {
+        display: block;
+        color: var(--bg-clr);
+        
+    } 
+    
+    .dashboard-logo {
+        display: flex;
+        justify-content: flex-start;
+        padding: 20px 12px 0px 12px;  
+        position: relative;
+    }
+    
+
+    .dashboard-logo h1 {
+        position: absolute;
+        display: block;
+        color: var(--bg-clr);
+        font-size: 24px;
+        top: 25px;
+        left: 70px;
+        font-style: italic;
+    }
+    
+    
+    
+/* header:
+    2 main rows
+        1st row:
+            2 columns (search bar, pfp w/ bell) 
+        2nd row:
+            flex container
+            action buttons on right, greeting section on left*/
+    .account-name-nav div img {
+        /* enlarge */
+        height: 2rem;
+        width: 2rem;
+    }
+    .search-bar-mob input {
+        display: block;
+        width: min(100%,500px);
+        border: 2px solid white;
+        background-color: rgb(237, 237, 237);
+        height: 100%;
+        border-radius: 10px;
+        padding: 10px;
+        transition: all 0.3s;
+        color: var(--text-clr)
+    }
+    
+     
+    
+    .search-bar-mob input:focus {
+        outline-style: none;
+        border: 2px solid grey;
+    }
+    
+    .search-bar-mob {
+        column-gap: 5px;
+        flex: 1;
+        display: flex;
+    }
+    
+    .account-name-nav {
+        column-gap: 30px;
+        padding: 20px 20px 0px 20px;
+    }
+
+    /* 2nd row */
+
+    .user-greet {
+        display: flex;
+        column-gap: 20px;
+        align-items: center;
+    }
+    
+    .user-greet img {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50px;
+        
+    }
+    
+    .greeting-row {
+       padding: 20px 30px;
+       place-content: center space-between;
+    }    
+    
+    .action-buttons {
+        display: flex;
+        column-gap: 20px;  
+        align-items: center;
+    }
+    .action-buttons button {
+        height: 40px;
+    }
+    
+/* main:
+ *
+    2 columns: 
+        1st column:
+            display all project cards
+            use (auto-fit, minmax(px,1fr))
+        2nd column:
+            announcements and trendings (flex container column) 
+            */
+
+
+    .main {
+        grid-template-columns: 4fr 1fr;
+    }
+
+
+    .projects {
+        grid-column: 1/2;
+    } 
+    
+    .announcements {
+        grid-column: 2/3;
+    }
+
+    .trending {
+        grid-column: 2/3;
+    }
+    
+    .projects-grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
+        
+    }
+
+    .outer-main {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+    
+
+    
+}
